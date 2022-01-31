@@ -34,11 +34,11 @@ export class CommuteTimesStack extends Stack {
     primaryTable.grantWriteData(scheduledLambda);
 
     const morningSchedule = new events.Rule(this, 'morningSchedule', {
-        schedule: events.Schedule.expression('cron(0/5 12-15 ? * MON-FRI *)'),
+        schedule: events.Schedule.expression('cron(0/10 12-14 ? * MON-FRI *)'),
     });
 
     const afternoonSchedule = new events.Rule(this, 'afternoonSchedule', {
-      schedule: events.Schedule.expression('cron(0/5 22-23 ? * MON-FRI *)'),
+      schedule: events.Schedule.expression('cron(0/10 22-23 ? * MON-FRI *)'),
   });
 
     const lambdaTarget = new eventsTargets.LambdaFunction(scheduledLambda)
